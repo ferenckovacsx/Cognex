@@ -1,21 +1,22 @@
 package ferenckovacsx.cognex;
 
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FirmwareListFragment.OnFragmentInteractionListener {
 
     ArrayList<Device> listOfDevices = new ArrayList<>();
 
@@ -59,14 +60,47 @@ public class MainActivity extends AppCompatActivity {
                         ArrayList<String> listOfDevicesString = new ArrayList<>();
 
                         for (int i = 0; i < listOfDevices.size(); i++) {
-                            listOfDevicesString.add(listOfDevices.get(i).getName());
+                            listOfDevicesString.add(listOfDevices.get(i).getId());
                         }
 
                         ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, listOfDevicesString);
 
                         listview.setAdapter(adapter);
 
-//                        if (listOfDevices.size() > 0) {
+                        listview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+                        {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                                    long arg3)
+                            {
+
+                                String title = (String)adapter.getItemAtPosition(position);
+
+                                Log.d(TAG, "onItemClick: " + title);
+
+                                FirmwareListFragment firmwareListFragment = new FirmwareListFragment();
+                                Bundle args = new Bundle();
+                                args.putString("title", title);
+                                firmwareListFragment.setArguments(args);
+
+                                FragmentManager manager = getFragmentManager();
+                                FragmentTransaction transaction = manager.beginTransaction();
+                                transaction.replace(R.id.fragment_container, firmwareListFragment, "");
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+                        });
+
+
+
+
+
+
+
+
+
+//                        if (listOfFirmware.size() > 0) {
 //                            emptyListTextView.setVisibility(View.GONE);
 //                            documentsHeaderTextView.setVisibility(View.VISIBLE);
 //                        } else {
@@ -83,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 //                        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), 1);
 //                        recyclerView.addItemDecoration(dividerItemDecoration);
 //
-//                        listAdapter = new DocumentsListAdapter(listOfDevices);
+//                        listAdapter = new DocumentsListAdapter(listOfFirmware);
 //                        recyclerView.setAdapter(listAdapter);
 //
 //                        listAdapter.setOnItemSelectedListener(new DocumentsListAdapter.OnItemSelectedListener() {
@@ -108,5 +142,10 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Get files error" + t.toString());
             }
         });
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
