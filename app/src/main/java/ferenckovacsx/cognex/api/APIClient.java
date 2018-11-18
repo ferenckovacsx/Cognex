@@ -1,4 +1,4 @@
-package ferenckovacsx.cognex;
+package ferenckovacsx.cognex.api;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package ferenckovacsx.cognex;
+package ferenckovacsx.cognex.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

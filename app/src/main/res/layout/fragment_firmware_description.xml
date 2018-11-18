@@ -4,41 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirmwareDescriptionFragment">
+    android:background="#ffffff"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".ui.FirmwareDescriptionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="MX-1500 V5.7.1 CR3 SR1"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:gravity="top">
+
+        <ImageView
+            android:contentDescription="@string/imageview_content"
+            android:id="@+id/firmwareDescriptionBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="10dp" />
+
+        <TextView
+            android:id="@+id/toolbarFirmwareTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="Do not install 5.7.1 CR3 SR1 unless directed to do so by a Cognex representative.\n\nDataMan firmware 5.7.1 CR3 SR1 contains the features and stability of 5.7.1 SR3, while adding:\n-\tDefault Android mode is set to AOA charging mode\n-\tDefault initial AOA switch timeout is set to 0 sec\n\n5.7.1 CR3 SR1 supports all build configurations of MX-1000 and MX-1502."
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:textColor="#000000"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
+        android:text="@string/created_label"
         android:id="@+id/createdLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Created:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -51,19 +69,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="2018-09-10T11:51:36"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/createdLabel"
         app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
     <TextView
+        android:text="@string/version_label"
         android:id="@+id/versionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Version:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -76,19 +93,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="V5.7.1 CR3 SR1"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/versionLabel"
         app:layout_constraintTop_toBottomOf="@+id/createdTextView" />
 
     <TextView
+        android:text="@string/filetype_label"
         android:id="@+id/filetypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Filetype:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -101,21 +117,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="firmware"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/filetypeLabel"
         app:layout_constraintTop_toBottomOf="@+id/versionTextView" />
 
 
-
     <TextView
+        android:text="@string/filename_label"
         android:id="@+id/fileLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="File:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -128,7 +142,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="files/MX-1500_v5.7.1_cr3_sr1.bin.gz"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/fileLabel"
@@ -136,12 +149,12 @@
 
 
     <TextView
+        android:text="@string/channel_label"
         android:id="@+id/channelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="Channel:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -154,19 +167,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="stable"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/channelLabel"
         app:layout_constraintTop_toBottomOf="@+id/fileTextView" />
 
     <TextView
+        android:text="@string/id_label"
         android:id="@+id/idLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="ID:"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -179,7 +191,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="18"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/idLabel"
@@ -189,11 +200,11 @@
         android:id="@+id/downloadButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="DOWNLOAD"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/download"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
