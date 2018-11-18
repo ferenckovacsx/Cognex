@@ -1,9 +1,5 @@
 package ferenckovacsx.cognex.api;
 
-/**
- * Created by ferenckovacsx on 2018-03-01.
- */
-
 import java.util.ArrayList;
 
 import ferenckovacsx.cognex.models.Device;

@@ -9,10 +9,6 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by ferenckovacsx on 2018-03-01.
- */
-
 public class APIClient {
 
     private static Retrofit retrofit = null;
